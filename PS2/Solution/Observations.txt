@@ -1,3 +1,21 @@
+Summary:
+---------
+State Pattern is used to solve this problem. As there are three states in this problem, we created three SubClasses of State.
+
+Problems in original code:
+--------------------------
+1) Usage of flags to handle states. This will lead to increased Cyclomatic Complexity.
+   Alternative: Use Interfaces to remove flags
+2) Using booleans for error checking.
+   Alternatives: Use Exception handling to control error situations.
+   
+General Rule:
+-------------
+* Number of values of flags              ==   Number of Interfaces we have to create.
+* Number of places where flag(s) is used ==   Number of Methods in single Interface.
+
+Differences between two solutions:
+-----------------------------------
 1) Information of next state is maintained in StopWatch only. 
    In my solution, ConcreteState used to set the next state of StopWatch.
    By moving the responsibility of setting next state to StopWatch, we eliminated two things:
@@ -6,4 +24,6 @@
         
 2) Usage of exceptions to handle invalid states. Invalid states should throw "InvalidStateException".
 
-TODO: Implement using exceptions.
+TODO:
+-----
+Implement using exceptions.

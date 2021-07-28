@@ -1,0 +1,52 @@
+package problem1;
+
+interface State{
+    start();
+    stop();
+    pause();
+    resume();
+}
+class BaseState: State{
+    start() { throw new InvalidStateException(); }
+    stop() { throw new InvalidStateException(); }
+    pause() { throw new InvalidStateException(); }
+    resume() { throw new InvalidStateException(); }
+}
+class Idle : BaseState { <-- 0
+    start() { invoke logic }
+}
+class Running : BaseState { <-- 1
+    stop() { invoke logic }
+    pause() { invoke logic }
+}
+class Suspended : BaseState { <-- 2
+    stop() { invoke logic }
+    resume() { invoke logic }
+}
+public class StopWatch {
+    Idle IDLE = new Idle();
+    Running RUNNING = new Running();
+    Suspended SUSPENDED = new Suspended();
+    
+    State flag = IDLE;
+    public void start()
+    {
+        flag.start();
+        flag = RUNNING;
+    }
+    public void stop()
+    {
+        flag.stop()
+        flag = IDLE;
+    }
+    public void pause()
+    {
+        flag.pause()
+        flag = SUSPENDED;
+    }
+    public void resume()
+    {
+        flag.resume()
+        flag = RUNNING;
+    }
+}

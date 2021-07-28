@@ -1,0 +1,9 @@
+1) Information of next state is maintained in StopWatch only. 
+   In my solution, ConcreteState used to set the next state of StopWatch.
+   By moving the responsibility of setting next state to StopWatch, we eliminated two things:
+       1) Static methods to create ConcreteStates.
+       2) Extra method in StopWatch to setState from ConcreteState.
+        
+2) Usage of exceptions to handle invalid states. Invalid states should throw "InvalidStateException".
+
+TODO: Implement using exceptions.
